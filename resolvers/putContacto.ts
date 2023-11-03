@@ -6,7 +6,7 @@ const updateContacto = async (req: Request, res: Response) => {
     const { dni } = req.params;
     const { name,email,postalCode,iso} = req.body;
 
-    const updateContacto = await ContactoModel.findOneAndUpdate(
+    const updatedContacto = await ContactoModel.findOneAndUpdate(
       { dni },
       { name, email,postalCode,iso},
       { new: true }
@@ -18,12 +18,12 @@ const updateContacto = async (req: Request, res: Response) => {
     }
 
     res.status(200).send({
-      name: updatedPerson.name,
-      email: updatedPerson.age,
-      dni: updatedPerson.dni,
-      postalCode: updatedPerson.postalCode,
-      iso: upatedPerson.iso,
-      id: updatedPerson._id.toString(),
+      name: updatedContacto.name,
+      email: updatedContacto.age,
+      dni: updatedContacto.dni,
+      postalCode: updatedContacto.postalCode,
+      iso: upatedContacto.iso,
+      id: updatedConatcto._id.toString(),
     });
   } catch (error) {
     res.status(500).send(error.message);
